@@ -14,19 +14,19 @@ bot.on("message", message => {
     if (message.author.bot) return;
     if (message.content.indexOf(prefix) !== 0) return;
 
-    const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase()
 
     if (command === "help") {
         const helpEmbed = new Fosscord.MessageEmbed()
             .setTitle(`${bot.user.username}'s commands`)
-            .setDescription(`**Prefix:** ${config.prefix}`)
+            .setDescription(`**Prefix:** ${prefix}`)
             .addField(`\`ping\``, `Check your bot's ping`)
-            .addField(`\`kick\``, `Usage: **${config.prefix}kick [@User]**\n**${config.prefix}kick [@User][Reason]**`)
-            .addField(`\`ban\``, `Usage: **${config.prefix}ban [@User]**\n**${config.prefix}ban [@User][Reason]**`)
-            .addField(`\`add\``, `Adds a role to a user \nUsage: **${config.prefix}add [@User] [Role]**`)
-            .addField(`\`remove\``, `Removes a role from a user \nUsage: **${config.prefix}remove [@User] [Role]**`)
-            .addField(`\`purge\``, `Clears a number of messages between 2 or 100 \nUsage: **${config.prefix}purge [number]**`)
+            .addField(`\`kick\``, `Usage: **${prefix}kick [@User]**\n**${prefix}kick [@User][Reason]**`)
+            .addField(`\`ban\``, `Usage: **${prefix}ban [@User]**\n**${prefix}ban [@User][Reason]**`)
+            .addField(`\`add\``, `Adds a role to a user \nUsage: **${prefix}add [@User] [Role]**`)
+            .addField(`\`remove\``, `Removes a role from a user \nUsage: **${prefix}remove [@User] [Role]**`)
+            .addField(`\`purge\``, `Clears a number of messages between 2 or 100 \nUsage: **${prefix}purge [number]**`)
             .addField(`\`rps\``, `Play rock paper scissors`)
             .addField(`\`say\``, `Have the bot say something`)
         message.channel.send(helpEmbed)
