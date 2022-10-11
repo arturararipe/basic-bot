@@ -39,3 +39,63 @@ const jokes = [
       msg.channel.send(jokes[Math.floor(Math.random() * jokes.length)]);
     }
   });
+
+  // Adding reaction-role function
+bot.on('messageReactionAdd', async (reaction, user) => {
+    if (reaction.message.partial) await reaction.message.fetch();
+    if (reaction.partial) await reaction.fetch();
+    if (user.bot) return;
+    if (!reaction.message.guild) return;
+    if (reaction.message.channel.id == '1029301452226532650') {
+      if (reaction.emoji.name === '🎮') {
+        await reaction.message.guild.members.cache
+          .get(user.id)
+          .roles.add('1029302579793860228');
+      }
+      if (reaction.emoji.name === '📷') {
+        await reaction.message.guild.members.cache
+          .get(user.id)
+          .roles.add('1029302623464953498');
+      }
+      if (reaction.emoji.name === '🏈') {
+        await reaction.message.guild.members.cache
+          .get(user.id)
+          .roles.add('1029302678431307445');
+      }
+      if (reaction.emoji.name === '🍹') {
+        await reaction.message.guild.members.cache
+          .get(user.id)
+          .roles.add('1029302713562797773');
+      }
+    } else return;
+  });
+  
+  // Removing reaction roles
+  bot.on('messageReactionRemove', async (reaction, user) => {
+    if (reaction.message.partial) await reaction.message.fetch();
+    if (reaction.partial) await reaction.fetch();
+    if (user.bot) return;
+    if (!reaction.message.guild) return;
+    if (reaction.message.channel.id == '1029301452226532650') {
+      if (reaction.emoji.name === '🎮') {
+        await reaction.message.guild.members.cache
+          .get(user.id)
+          .roles.remove('1029302579793860228');
+      }
+      if (reaction.emoji.name === '📷') {
+        await reaction.message.guild.members.cache
+          .get(user.id)
+          .roles.remove('1029302623464953498');
+      }
+      if (reaction.emoji.name === '🏈') {
+        await reaction.message.guild.members.cache
+          .get(user.id)
+          .roles.remove('1029302678431307445');
+      }
+      if (reaction.emoji.name === '🍹') {
+        await reaction.message.guild.members.cache
+          .get(user.id)
+          .roles.remove('1029302713562797773');
+      }
+    } else return;
+  });
