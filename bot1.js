@@ -29,11 +29,11 @@ bot.on("message", message => {
             .addField(`\`purge\``, `Clears a number of messages between 2 or 100 \nUsage: **${prefix}purge [number]**`)
             .addField(`\`rps\``, `Play rock paper scissors`)
             .addField(`\`say\``, `Have the bot say something`)
-        messageCreate.channel.send(helpEmbed)
+        message.channel.send(helpEmbed)
     }
 
     if (command === "ping") {
-        messageCreate.channel.send(`Pong **(${Date.now() - message.createdTimestamp}ms)**`)
+        message.channel.send(`Pong **(${Date.now() - message.createdTimestamp}ms)**`)
     }
 
     if (command === "kick") {
@@ -53,11 +53,11 @@ bot.on("message", message => {
         const reason = args.slice(1).join(" ")
         if (member) {
             if (!reason) return member.kick().then(member => {
-                messageCreate.channel.send(`${member.user.tag} was kicked, no reason was provided`);
+                message.channel.send(`${member.user.tag} was kicked, no reason was provided`);
             })
 
             if (reason) return member.kick().then(member => {
-                messageCreate.channel.send(`${member.user.tag} was kicked for ${reason}`);
+                message.channel.send(`${member.user.tag} was kicked for ${reason}`);
             })
         }
     }
@@ -79,11 +79,11 @@ bot.on("message", message => {
         const reason = args.slice(1).join(" ")
         if (member) {
             if (!reason) return member.ban().then(member => {
-                messageCreate.channel.send(`${member.user.tag} was banned, no reason was provided`);
+                message.channel.send(`${member.user.tag} was banned, no reason was provided`);
             })
 
             if (reason) return member.ban(reason).then(member => {
-                messageCreate.channel.send(`${member.user.tag} was banned for ${reason}`);
+                message.channel.send(`${member.user.tag} was banned for ${reason}`);
             })
         }
     }
@@ -113,7 +113,7 @@ bot.on("message", message => {
         msg.delete({ timeout: 30000 })
     })
         member.roles.add(roleAdd.id).then((member) => {
-            messageCreate.channel.send(`${add} added to ${member.displayName}`)
+            message.channel.send(`${add} added to ${member.displayName}`)
         })
     }
 
@@ -142,7 +142,7 @@ bot.on("message", message => {
         msg.delete({ timeout: 30000 })
     })
         member.roles.remove(roleRemove.id).then((member) => {
-            messageCreate.channel.send(`${remove} removed from ${member.displayName}`)
+            message.channel.send(`${remove} removed from ${member.displayName}`)
         })
     }
 
@@ -151,7 +151,7 @@ bot.on("message", message => {
     if(!text) return message.channel.send("You have not specified something to say").then(msg => {
         msg.delete({ timeout: 30000 })
     })
-    messageCreate.channel.send(text)
+    message.channel.send(text)
     
     }
    
@@ -163,7 +163,7 @@ bot.on("message", message => {
     if(!number) return message.channel.send("You haven't specified a number to purge").then(msg => {
         msg.delete({ timeout: 30000 })
     })
-   messageCreate.channel.bulkDelete(number).catch(console.error)
+   message.channel.bulkDelete(number).catch(console.error)
    
    }
     
@@ -174,7 +174,7 @@ bot.on("message", message => {
             "scissors :scissors: "
         ]
         const option = options[Math.floor(Math.random() * options.length)]
-        messageCreate.channel.send(`You got ${option}`)
+        message.channel.send(`You got ${option}`)
     }
 
 });
