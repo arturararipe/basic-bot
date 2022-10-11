@@ -37,7 +37,7 @@ bot.on("message", message => {
     }
 
     if (command === "kick") {
-        if (!message.member.hasPermission('KICK_MEMBERS'))
+        if (!message.member.permissions.has('KICK_MEMBERS'))
             return message.channel.send("Insufficient permissions (Requires permission `Kick members`)").then(msg => {
         msg.delete({ timeout: 30000 })
     })
@@ -63,7 +63,7 @@ bot.on("message", message => {
     }
 
     if (command === "ban") {
-        if (!message.member.hasPermission('BAN_MEMBERS'))
+        if (!message.member.permissions.has('BAN_MEMBERS'))
             return message.channel.send("Insufficient permissions (Requires permission `Ban members`)").then(msg => {
         msg.delete({ timeout: 30000 })
     })
@@ -89,7 +89,7 @@ bot.on("message", message => {
     }
 
     if (command === "add") {
-        if (!message.member.hasPermission('MANAGE_ROLES'))
+        if (!message.member.permissions.has('MANAGE_ROLES'))
             return message.channel.send("Insufficient permissions (Requires permission `Manage roles`)").then(msg => {
         msg.delete({ timeout: 30000 })
     })
@@ -118,7 +118,7 @@ bot.on("message", message => {
     }
 
     if (command === "remove") {
-        if (!message.member.hasPermission('MANAGE_ROLES'))
+        if (!message.member.permissions.has('MANAGE_ROLES'))
             return message.channel.send("Insufficient permissions (Requires permission `Manage roles`)").then(msg => {
         msg.delete({ timeout: 30000 })
     })
@@ -156,7 +156,7 @@ bot.on("message", message => {
     }
    
     if (command === "purge") {
-    if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.channel.send("Insufficient permissions (requires permission `Manage messages`)").then(msg => {
+    if(!message.member.permissions.has('MANAGE_MESSAGES')) return message.channel.send("Insufficient permissions (requires permission `Manage messages`)").then(msg => {
         msg.delete({ timeout: 30000 })
     })
     const number = args.join(" ")
