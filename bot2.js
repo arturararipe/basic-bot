@@ -34,7 +34,7 @@ const jokes = [
     'There are two ways to write error-free programs; only the third one works.',
   ];
   
-  client.on('message', (msg) => {
+  bot.on('message', (msg) => {
     if (msg.content === '!joke') {
       msg.channel.send(jokes[Math.floor(Math.random() * jokes.length)]);
     }
